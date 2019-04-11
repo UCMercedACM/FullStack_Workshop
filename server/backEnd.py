@@ -8,6 +8,7 @@ CORS(app)                           # enable cross origin on this app
 
 
 @app.route("/postStatus", methods = ["GET", "POST"])
+#dssdsd
 def postStatus():
     if (request.method == "POST"):
         #covert object from frontEnd into dictionary in python
