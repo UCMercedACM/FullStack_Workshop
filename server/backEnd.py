@@ -33,6 +33,7 @@ def postStatus():
 
         return "SUCCESS"
 
+#NOTE fetch truck info that is used in mechanic component
 @app.route("/fetchTrucks", methods = ["GET", "POST"])
 def fetchTrucks():
     connect = sql.connect("truck.db")
@@ -40,11 +41,12 @@ def fetchTrucks():
     if (request.method == "POST"):
         data  = (json.loads(request.data))["data"]
         truckID = data["tID"]
+        print "TRUJN ", truckID
         truckInfo = cursor.execute('''SELECT i_battery, i_clutch, i_starter FROM
                                     inspection WHERE i_truckID = ?''', (truckID,) ).fetchall()
         #format it nicely
         data = []
-        print truckInfo
+        print "TRUCK INFO", truckInfo
         for x in truckInfo[0]:
             data.append(x)
             #convert into json data and send it to frontEnd
@@ -52,11 +54,30 @@ def fetchTrucks():
         data = json.dumps(data)
         return data
         
-
+#f
     if (request.method == "GET"):
         trucks = cursor.execute("SELECT i_truckID FROM inspection").fetchall()
         trucks = json.dumps(trucks)
         return trucks
+
+#MAKE POST REQUEST FOR MECHANIC
+@app.route("/postFix", methods = ["GET", "POST"])
+def postFix():
+    if(request.method == "POST"):
+        store = (json.loads(request.data))["condition"]
+        starter = store["starter"]
+        clutch = store["clutch"]
+        battery = store["battery"]
+        truckID = store["truckID"]
+
+        connect = sql.connect("truck.db")
+        cursor = connect.cursor()
+        cursor.execute('''UPDATE inspection SET i_battery = ?, i_starter = ?, i_clutch = ?
+                        WHERE i_truckID = ?''', (battery, starter, clutch, truckID))
+        connect.commit()
+
+        return "CHANGES MADE!!!!!!!!!"
+
 
 if __name__ == '__main__':              
     app.run(debug = True)           #enable debugging so everytime we save, changes are automatically recompiled
