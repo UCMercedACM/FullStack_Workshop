@@ -13,9 +13,6 @@ class NavBar extends Component{
                         <Link  className = "navbar-item" to = "/mechanic">
                              <span>Mechanic Fix</span>
                         </Link>
-                        {/* <Link  className = "navbar-item" to = "/pending">
-                            <span>Pending To be Fixed</span>
-                        </Link> */}
                     </div>
                 </nav>
             </React.Fragment>

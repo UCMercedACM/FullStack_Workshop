@@ -6,24 +6,13 @@ import {
   Route
 } from 'react-router-dom';
 
-//IMPORT COMPONENTS
-import NavBar from "./components/navbar";
-import TruckStatus from "./components/truckStats";
-import MechanicFix from "./components/mechanicFix";
-
 class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Router>
-          <div>
-            <Route path = "/" component = {NavBar}/>  
-            <div className = "container">
-              <Route exact path = {["/", "/status"]} component = {TruckStatus}/>  
-              <Route path = "/mechanic" component = {MechanicFix}/> 
-            </div>
-          </div>
-        </Router>
+        {/* FILL HERE */}
+        COOL
+        {/* ////////  */}
       </React.Fragment>
     );
   }

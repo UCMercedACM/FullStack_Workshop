@@ -3,65 +3,8 @@ import axios from"axios";
 //cooluhhuuhuhkuhuh
 class MechanicFix extends Component {
     state = {
-        trucks : [],
-        truckSelected: "",
-        clutch: "",
-        starter: "",
-        battery: "",
-        //will store whether or not, post was made successfully
-        fixed: "",
-        truckSelected: ""
+        trucks: [] // used to store truck IDs already created on backEnd
       }
-
-    handleChange = (event) => {
-        this.setState({[event.target.name]: event.target.value});
-        console.log(event.target.name, event.target.value);
-        if(event.target.name === "truckSelected"){
-            this.handleTruckData(event.target.value);
-        }
-    }
-
-    //fetch specified truck ID by the user
-    handleTruckData = (truckData) =>{
-        const data  = {
-            tID: truckData
-        } 
-        axios.post("http://localhost:5000/fetchTrucks", {data})
-        .then(res =>{
-            const battery = res.data[0];
-            const clutch = res.data[1];
-            const starter = res.data[2];
-            this.setState({battery});
-            this.setState({clutch});
-            this.setState({starter});
-        })
-    }
-
-    //used to fix truck
-    handleSubmit = (event) =>{
-        event.preventDefault();
-        const condition = {
-            battery:  this.state.battery,
-            starter: this.state.starter,
-            clutch: this.state.clutch,
-            truckID: this.state.truckSelected
-        }
-        axios.post("http://localhost:5000/postFix", {condition})
-        .then(res => {
-            const fixed = res.data;
-            this.setState({fixed});
-        })
-    }
-
-    //lifecycle to fetch truck IDs
-    componentDidMount () {
-        axios.get("http://localhost:5000/fetchTrucks")
-        .then(res =>{
-            const trucks = res.data;
-            this.setState({trucks});
-        })
-    }
-
     render() { 
         return (
             <React.Fragment>

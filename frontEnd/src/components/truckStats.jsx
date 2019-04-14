@@ -2,44 +2,17 @@ import React, { Component } from 'react';
 import axios from "axios";
 
 class truckStats extends Component {
+    //STATE TO STORE VARIABLES TO BE POSTED
     state = {
-        //for date table
-        date: "",
-        time: "",
-        //for inspection table
-        truck_id: "",
-        battery: "GOOD",
-        starter: "GOOD",
-        clutch: "GOOD",
-        comment: "",
-        posted: ""
+    
       }
+    //FUNCTIONS GO HERE:
 
-      handleChange = (event) =>{
-        this.setState({[event.target.name]: event.target.value});
-        console.log(event.target.name, event.target.value);
-      }
 
-      handleSubmit = (event) =>{
-          event.preventDefault();               //prevents refreshing of page when submit is clicked
-          //object that will be sent to backend
-          const truck = {
-              date: this.state.date,
-              time: this.state.time,
-              truck_id: this.state.truck_id,
-              battery: this.state.battery,
-              starter: this.state.starter,
-              comment: this.state.comment,
-              clutch: this.state.clutch
-          }
-          //endPoint to post data to backEnd
-          axios.post("http://localhost:5000/postStatus", {truck})
-          .then(res=>{
-              const posted = res.data;
-              this.setState({posted});
-          })
-        
-      }
+
+
+
+    //////////////////
     render() { 
         return (
             <React.Fragment>
