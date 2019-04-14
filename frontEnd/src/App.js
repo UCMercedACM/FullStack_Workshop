@@ -19,7 +19,7 @@ class App extends Component {
           <div>
             <Route path = "/" component = {NavBar}/>  
             <div className = "container">
-              <Route path = "/status" component = {TruckStatus}/>  
+              <Route exact path = {["/", "/status"]} component = {TruckStatus}/>  
               <Route path = "/mechanic" component = {MechanicFix}/> 
             </div>
           </div>

@@ -5,7 +5,7 @@ class NavBar extends Component{
     render(){
         return(
             <React.Fragment>
-                <nav className = "navbar is-primary">
+                <nav className = "navbar is-warning">
                     <div className = "navbar-end">
                         <Link  className = "navbar-item" to = "/status">
                              <span>Truck Status</span>
@@ -13,9 +13,9 @@ class NavBar extends Component{
                         <Link  className = "navbar-item" to = "/mechanic">
                              <span>Mechanic Fix</span>
                         </Link>
-                        <Link  className = "navbar-item" to = "/pending">
+                        {/* <Link  className = "navbar-item" to = "/pending">
                             <span>Pending To be Fixed</span>
-                        </Link>
+                        </Link> */}
                     </div>
                 </nav>
             </React.Fragment>
