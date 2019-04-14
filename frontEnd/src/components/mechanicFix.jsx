@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import axios from"axios";
-//cooluhhuuhuhkuhuh
+
 class MechanicFix extends Component {
     state = {
         trucks: [] // used to store truck IDs already created on backEnd
       }
+    //METHODS GO HERE:
+
+
+
+
+
+    //////////////////
     render() { 
         return (
             <React.Fragment>

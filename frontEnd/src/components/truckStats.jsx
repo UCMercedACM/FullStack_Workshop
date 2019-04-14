@@ -6,7 +6,7 @@ class truckStats extends Component {
     state = {
     
       }
-    //FUNCTIONS GO HERE:
+    //METHODS GO HERE:
 
 
 
