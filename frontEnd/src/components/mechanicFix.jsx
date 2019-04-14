@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from"axios";
-//cooluhhuuh
+//cooluhhuuhuhkuhuh
 class MechanicFix extends Component {
     state = {
         trucks : [],
